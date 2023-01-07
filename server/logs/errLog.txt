@@ -1,1 +1,9 @@
 20230107	14:11:13	1b90f008-42b8-40b9-9721-d415daf7e8fd	Error: Not allowed by cors
+20230107	14:31:28	485023ed-429b-4ac4-9fec-d9974e5a479b	ReferenceError: path is not defined
+20230107	14:32:07	aee59db0-7bdd-478c-83ce-68d0b8938871	ReferenceError: path is not defined
+20230107	14:32:08	5d0f15f0-f815-41c3-87e1-e49e3c27cb33	ReferenceError: path is not defined
+20230107	14:32:10	7e4b8ffe-3fa0-4469-9fb6-36c7b595acda	ReferenceError: path is not defined
+20230107	14:32:15	f6aad298-edea-4c40-87df-c5c2148b23d5	ReferenceError: path is not defined
+20230107	14:32:50	c6dd395d-6ba8-42d1-b93d-4e115cbde398	ReferenceError: path is not defined
+20230107	14:33:23	2bbd46ba-0b28-439e-a906-e1971c90efe3	ReferenceError: path is not defined
+20230107	14:34:08	8e8260cb-693f-42aa-a7b9-61e43cfa49f3	Error: ENOENT: no such file or directory, stat '/Users/kamal/Documents/Web/React Js/MERN_CODE_GUIDE/views/index.html'

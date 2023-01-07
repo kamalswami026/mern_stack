@@ -3,6 +3,10 @@ import path from "path";
 import cors from "cors";
 import { logger } from "./middleware/logEvents.js";
 import { errorHandler } from "./middleware/errorHandler.js";
+import subdir from "./routes/subdir.js";
+import root from "./routes/root.js";
+import employees from "./routes/api/employees.js";
+
 const PORT = process.env.PORT || 3500;
 
 const app = express();
@@ -27,24 +31,18 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
 
 //middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static(path.join(path.resolve(), "/public")));
+app.use("/subdir", express.static(path.join(path.resolve(), "/public")));
 
-app.get("^/$|index(.html)?", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "views", "index.html"));
-});
-
-app.get("/new-page(.html)?", (req, res) => {
-  res.sendFile(path.join(path.resolve(), "views", "new-page.html"));
-});
-
-app.get("/old-page(.html)?", (req, res) => {
-  res.redirect(301, "/new-page");
-});
+app.use("/subdir", subdir);
+app.use("/", root);
+app.use("/employees", employees);
 
 app.get("/*", (req, res) => {
   res.status(404);
