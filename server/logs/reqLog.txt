@@ -61,3 +61,11 @@
 20230107	16:11:49	350d434e-b56f-44e5-a87b-9738c12a0f51	POST 	 undefined 	 /employees/1
 20230107	16:11:56	720b218f-6a77-4a62-9ed6-6eac2e818c56	POST 	 undefined 	 /employees
 20230107	16:12:08	c00e28a0-30d1-4271-b70c-63915cc57f0a	GET 	 undefined 	 /employees
+20230107	16:34:36	828715af-2419-4109-8906-4d54140c2972	GET 	 undefined 	 /
+20230107	16:34:36	b9c3762c-af59-41d9-843b-ec90b4d00055	GET 	 undefined 	 /css/style.css
+20230107	16:54:13	3f2083e0-d88c-499a-ad93-eec79028e851	GET 	 undefined 	 /employees
+20230107	16:54:27	a9aa6949-97a1-45f8-b540-5df62f36b05a	POST 	 undefined 	 /employees
+20230107	16:54:34	1d49542e-36c8-4bd9-9775-095df5b71c45	GET 	 undefined 	 /employees
+20230107	16:55:46	66c7fa99-f5da-4b35-b9d3-203b195e0b31	PUT 	 undefined 	 /employees/3
+20230107	16:55:55	bbd21222-c5db-4ba9-b591-f33cec9af378	PUT 	 undefined 	 /employees
+20230107	16:56:06	3454af7a-fb8d-4208-8999-22963e311b94	PUT 	 undefined 	 /employees
