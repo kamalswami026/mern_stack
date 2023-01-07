@@ -1,6 +1,11 @@
 import { createRequire } from "module";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { promises as fsPromise } from "fs";
+import path from "path";
+import dotenv from "dotenv";
 
+dotenv.config();
 const require = createRequire(import.meta.url);
 const usersList = require("../model/users.json");
 
@@ -13,7 +18,6 @@ const userDB = {
 
 export const handleLogin = async (req, res) => {
   const { user, pwd } = req.body;
-  console.log("🚀 ~ file: authController.js:16 ~ handleLogin ~ user", user)
 
   if (!user || !pwd)
     return res
@@ -25,7 +29,37 @@ export const handleLogin = async (req, res) => {
 
   const match = await bcrypt.compare(pwd, foundUser.password);
   if (match) {
-    res.json({ success: `User ${user} logged in!` });
+    //jwt
+    const accessToken = jwt.sign(
+      { username: foundUser.username },
+      process.env.ACCESS_TOKEN_SECRET,
+      { expiresIn: "30s" }
+    );
+    const refreshToken = jwt.sign(
+      { username: foundUser.username },
+      process.env.REFRESH_TOKEN_SECRET,
+      { expiresIn: "1d" }
+    );
+    const otherUsers = userDB.users.filter(
+      (person) => person.username !== foundUser.username
+    );
+
+    const currentUser = { ...foundUser, refreshToken };
+
+    userDB.setUsers([...otherUsers, currentUser]);
+
+    await fsPromise.writeFile(
+      path.join(path.resolve(), "model", "users.json"),
+      JSON.stringify(userDB.users)
+    );
+
+    res.cookie("jwt", refreshToken, {
+      httpOnly: true,
+      sameSite: "None",
+      secure: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    });
+    res.json({ accessToken });
   } else {
     res.sendStatus(401);
   }
