@@ -7,3 +7,10 @@
 20230107	14:32:50	c6dd395d-6ba8-42d1-b93d-4e115cbde398	ReferenceError: path is not defined
 20230107	14:33:23	2bbd46ba-0b28-439e-a906-e1971c90efe3	ReferenceError: path is not defined
 20230107	14:34:08	8e8260cb-693f-42aa-a7b9-61e43cfa49f3	Error: ENOENT: no such file or directory, stat '/Users/kamal/Documents/Web/React Js/MERN_CODE_GUIDE/views/index.html'
+20230107	17:26:25	7757eea1-7622-4c5b-9aab-b5550dbacc45	SyntaxError: Unexpected string in JSON at position 14
+20230107	17:28:29	8a2adecc-bee4-48ed-ad86-b8cf26aa6816	SyntaxError: Unexpected string in JSON at position 14
+20230107	17:39:51	3c7c47ff-3f98-4c5b-866e-033ab4a75531	SyntaxError: Unexpected token u in JSON at position 4
+20230107	17:40:59	c609382f-ae33-4345-acbc-0225aa54b598	SyntaxError: Unexpected token u in JSON at position 4
+20230107	17:43:06	afb0c9f1-39a2-4e1e-ad3c-2d5018246fec	SyntaxError: Unexpected token u in JSON at position 4
+20230107	17:43:25	6ee7f7a6-ac86-4cbd-9324-89e78ec65817	SyntaxError: Unexpected token u in JSON at position 4
+20230107	17:43:55	6fcbfa72-8f05-4ebc-9525-7cb47d1f1eb4	SyntaxError: Unexpected token u in JSON at position 4

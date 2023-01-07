@@ -5,6 +5,8 @@ import { logger } from "./middleware/logEvents.js";
 import { errorHandler } from "./middleware/errorHandler.js";
 import root from "./routes/root.js";
 import employees from "./routes/api/employees.js";
+import register from "./routes/register.js";
+import auth from "./routes/auth.js";
 import { corsOptions } from "./config/corsOptions.js";
 
 const PORT = process.env.PORT || 3500;
@@ -24,6 +26,8 @@ app.use(express.static(path.join(path.resolve(), "/public")));
 
 //routes
 app.use("/", root);
+app.use("/auth", auth);
+app.use("/register", register);
 app.use("/employees", employees);
 
 app.get("/*", (req, res) => {
