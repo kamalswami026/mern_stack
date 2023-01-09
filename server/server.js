@@ -13,6 +13,11 @@ import { corsOptions } from "./config/corsOptions.js";
 import { verifyJWT } from "./middleware/verifyJWT.js";
 import cookieParser from "cookie-parser";
 import { credentials } from "./middleware/credentials.js";
+import mongoose from "mongoose";
+import { connectDB } from "./config/dbConnect.js";
+
+//connect to database
+connectDB();
 
 const PORT = process.env.PORT || 3500;
 
@@ -55,4 +60,7 @@ app.get("/*", (req, res) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+mongoose.connection.once("open", () => {
+  console.log("Connected to database");
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
