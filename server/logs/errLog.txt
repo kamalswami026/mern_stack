@@ -16,3 +16,4 @@
 20230107	17:43:55	6fcbfa72-8f05-4ebc-9525-7cb47d1f1eb4	SyntaxError: Unexpected token u in JSON at position 4
 20230107	18:15:49	01822387-f112-437e-8419-2a5f8176ad89	TypeError: req.headers is not a function
 20230107	18:36:50	1e830cc7-41c5-488a-abef-95427e2a87c3	Error: "expiredIn" is not allowed in "options"
+20230109	15:19:53	357b878d-8c8c-43b0-b31e-580f4116939b	TypeError: authHeader?.startswith is not a function
