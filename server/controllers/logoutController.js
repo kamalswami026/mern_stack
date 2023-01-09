@@ -1,16 +1,4 @@
-import { createRequire } from "module";
-import { promises as fsPromises } from "fs";
-import path from "path";
-
-const require = createRequire(import.meta.url);
-const usersList = require("../model/users.json");
-
-const userDB = {
-  users: usersList,
-  setUsers: function (data) {
-    this.users = data;
-  },
-};
+import User from "../model/User.js";
 
 export const handleLogout = async (req, res) => {
   const cookies = req.cookies;
@@ -18,25 +6,16 @@ export const handleLogout = async (req, res) => {
   if (!cookies?.jwt) return res.sendStatus(204); // No content
 
   const refreshToken = cookies.jwt;
-  const foundUser = userDB.users.find(
-    (person) => person.refreshToken === refreshToken
-  );
+  const foundUser = await User.findOne({ refreshToken }).exec();
   if (!foundUser) {
     res.clearCookie("jwt", { httpOnly: true, secure: true, sameSite: "None" });
     return res.sendStatus(204);
   }
 
-  const otherUsers = userDB.users.filter(
-    (person) => person.refreshToken !== foundUser.refreshToken
-  );
-
-  const currentUser = { ...foundUser, refreshToken: "" };
-  userDB.setUsers([...otherUsers, currentUser]);
-
-  await fsPromises.writeFile(
-    path.join(path.resolve(), "model", "users.json"),
-    JSON.stringify(userDB.users)
-  );
+  //delete refresh token from database
+  foundUser.refreshToken = "";
+  const result = foundUser.save();
+  console.log(result);
 
   res.clearCookie("jwt", { httpOnly: true, secure: true, sameSite: "None" });
   res.sendStatus(204);
