@@ -2,6 +2,7 @@ import User from "../model/User.js";
 import bcrypt from "bcrypt";
 
 export const handleNewUser = async (req, res) => {
+
   const { user, pwd } = req.body;
 
   if (!user || !pwd)
